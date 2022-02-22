@@ -46,12 +46,15 @@ function updateInput(obj) {
 }
 
 const formClear = e => {
+
   e.preventDefault();
-
-  formRef.reset();
-  localStorage.clear();
-
-  console.log(inputValue);
+  if (inputValue.email && inputValue.message) {
+    formRef.reset();
+    localStorage.clear();
+    console.log(inputValue);
+  } else {
+    window.alert("Заполни все поля побратски...")
+  }
 };
 
 formRef.addEventListener('input', throttle(setInputValueForm, 500));
